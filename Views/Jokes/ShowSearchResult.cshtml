@@ -1,0 +1,42 @@
+﻿@model IEnumerable<JokesWebApp.Models.Joke>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<h1><i class="bi bi-list-stars"></i> Search Results</h1>
+
+@if (Model.Any())
+{
+    <p>Found @Model.Count() result(s)</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Joke</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><span class="badge bg-secondary">@item.Category</span></td>
+                    <td>@item.Content</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">No jokes found. Try a different search.</div>
+}
+
+<a asp-action="Search" class="btn btn-primary">Search Again</a>
+<a asp-action="Index" class="btn btn-secondary">Back to All Jokes</a>

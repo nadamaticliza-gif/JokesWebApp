@@ -1,0 +1,71 @@
+﻿@model JokesWebApp.Models.Joke
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="display-6 mb-3">
+    <i class="bi bi-eye"></i> Joke Details
+</h1>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="card-title">
+            <span class="badge bg-secondary">@Model.Category</span>
+        </h5>
+        <p class="card-text fs-5 mt-3">@Model.Content</p>
+    </div>
+    <div class="card-footer bg-transparent">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">
+            <i class="bi bi-pencil"></i> Edit
+        </a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+<h3 class="mt-4"><i class="bi bi-chat-dots"></i> Comments</h3>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <form asp-action="AddComment" method="post">
+                <input type="hidden" name="jokeId" value="@Model.Id" />
+                <div class="mb-3">
+                    <textarea name="commentText" class="form-control" rows="3" placeholder="Add a comment..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="bi bi-send"></i> Post Comment
+                </button>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        <a asp-area="Identity" asp-page="/Account/Login">Log in</a> to post a comment.
+    </div>
+}
+
+@if (Model.Comments != null && Model.Comments.Any())
+{
+    @foreach (var comment in Model.Comments.OrderByDescending(c => c.PostedDate))
+    {
+        <div class="card mb-2">
+            <div class="card-body">
+                <p class="mb-1">@comment.Text</p>
+                <small class="text-muted">
+                    <i class="bi bi-person"></i> @(comment.UserName ?? "Anonymous") &nbsp;|&nbsp;
+                    <i class="bi bi-clock"></i> @comment.PostedDate.ToString("g")
+                </small>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p class="text-muted">No comments yet. Be the first!</p>
+}
