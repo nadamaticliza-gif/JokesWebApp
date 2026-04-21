@@ -32,7 +32,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Jokes}/{action=Index}/{id?}");
 
 app.MapRazorPages(); // <-- 4. Add this: Enables /Identity/Account/Register pages
 

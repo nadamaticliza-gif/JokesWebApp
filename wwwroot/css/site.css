@@ -1,22 +1,103 @@
+:root {
+    --bg-main: #1a102e; /* dark purple background */
+    --bg-surface: #2d1b69; /* cards, navbar, tables */
+    --bg-hover: #3d2a7d; /* hover states */
+    --text-main: #f8f9fa; /* main white text */
+    --text-muted: #b8b5c6; /* secondary text */
+    --border-color: #4a3b7a; /* borders */
+    --link-color: #a78bfa; /* purple links */
+    --link-hover: #c4b5fd; /* link hover */
+    --btn-primary: #7c3aed; /* buttons */
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+/* Cards, tables, navbar, footer */
+.card, .table, .navbar, .modal-content, footer {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color);
+}
+
+    .table th, .table td {
+        border-color: var(--border-color);
+        color: var(--text-main);
+    }
+
+.table-hover tbody tr:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-main);
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+}
+
+    a:hover {
+        color: var(--link-hover);
+    }
+
+.navbar-brand, .nav-link {
+    color: var(--text-main) !important;
+}
+
+    .nav-link:hover {
+        color: var(--link-hover) !important;
+    }
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--btn-primary);
+    border-color: var(--btn-primary);
+}
+
+    .btn-primary:hover {
+        background-color: var(--bg-hover);
+        border-color: var(--bg-hover);
+    }
+
+/* Forms */
+.form-control, .form-select {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+    .form-control:focus, .form-select:focus {
+        background-color: var(--bg-surface);
+        color: var(--text-main);
+        border-color: var(--link-color);
+        box-shadow: 0 0 0 0.25rem rgba(167, 139, 250, 0.25);
+    }
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+/* Focus states */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus,
+.form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem var(--bg-main), 0 0.25rem var(--link-color);
 }

@@ -257,3 +257,4 @@ C:\Users\nada\source\repos\JokesWebApp\JokesWebApp\obj\Debug\net8.0\refint\Jokes
 C:\Users\nada\source\repos\JokesWebApp\JokesWebApp\obj\Debug\net8.0\JokesWebApp.pdb
 C:\Users\nada\source\repos\JokesWebApp\JokesWebApp\obj\Debug\net8.0\JokesWebApp.genruntimeconfig.cache
 C:\Users\nada\source\repos\JokesWebApp\JokesWebApp\obj\Debug\net8.0\ref\JokesWebApp.dll
+C:\Users\nada\source\repos\JokesWebApp\JokesWebApp\obj\Debug\net8.0\JokesWebApp.sourcelink.json
